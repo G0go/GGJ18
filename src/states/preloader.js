@@ -1,3 +1,5 @@
+import * as Phaser from 'phaser-ce';
+
 class Preloader extends Phaser.State {
 
   constructor() {

@@ -1,3 +1,5 @@
+import * as Phaser from 'phaser-ce';
+
 class Menu extends Phaser.State {
 
   constructor() {

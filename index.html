@@ -1,28 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!doctype html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Phaser - ES6 - Webpack</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="MobileOptimized" content="320">
-    <meta http-equiv="cleartype" content="on">
-    <meta name="format-detection" content="telephone=no">
-    <style>
-        html,
-        body {
-            margin: 0;
-            padding: 0;
-        }
-    </style>
+  <meta charset="utf-8">
+  <title>GGJ18</title>
+
+  <!-- build:css main.min.css -->
+  <link rel="stylesheet" href="css/main.css">
+  <!-- /build -->
 </head>
 
 <body>
 
-    <div id="content"></div>
-    <!-- uncomment the line bellow for cordova feature -->
-    <!-- <script type="text/javascript" src="cordova.js"></script> -->
-<script type="text/javascript" src="./dist/vendor.bundle.js"></script><script type="text/javascript" src="./dist/bundle.js"></script></body>
+  <div id="GGJ18-game" class="game"></div>
 
+  <!-- build:js phaser.min.js -->
+  <script src="node_modules/phaser-ce/build/phaser.min.js"></script>
+  <!-- /build -->
+
+  <!-- build:js bundle.min.js -->
+  <script src="bundle.js"></script>
+  <!-- /build -->
+
+</body>
 </html>
+

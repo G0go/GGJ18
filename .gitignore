@@ -1,14 +1,7 @@
-.*
-*.log
-Thumbs.db
-
-dist/
+.DS_Store
+*.db
 build/
 node_modules/
-.idea
 
-!.git*
-!.babelrc
-!.eslint*
-!.yo-rc.json
-!.editorconfig
+.idea/
+package-lock.json

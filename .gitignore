@@ -1,7 +1,10 @@
-.DS_Store
-*.db
-build/
 node_modules/
-
+www/
+platforms/
+plugins/
+dist/
+.vscode/
+*.log
+/index.html
+build/
 .idea/
-package-lock.json

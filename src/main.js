@@ -1,16 +1,57 @@
-import Boot from './states/boot';
-import Game from './states/game';
-import Menu from './states/menu';
-import Preloader from './states/preloader';
-import Gameover from './states/gameover';
+import 'pixi'
+import 'p2'
+import Phaser from 'phaser'
 
+import BootState from './states/Boot'
+import SplashState from './states/Splash'
+import GameState from './states/Game'
 
-const game = new Phaser.Game(window.innerWidth, window.innerHeight, Phaser.AUTO, 'GGJ18-game');
+import config from './config'
 
-game.state.add('boot', new Boot());
-game.state.add('game', new Game());
-game.state.add('menu', new Menu());
-game.state.add('preloader', new Preloader());
-game.state.add('gameover', new Gameover());
+class Game extends Phaser.Game {
+  constructor () {
+    const docElement = document.documentElement
+    const width = docElement.clientWidth > config.gameWidth ? config.gameWidth : docElement.clientWidth
+    const height = docElement.clientHeight > config.gameHeight ? config.gameHeight : docElement.clientHeight
 
-game.state.start('boot');
+    super(width, height, Phaser.CANVAS, 'content', null)
+
+    this.state.add('Boot', BootState, false)
+    this.state.add('Splash', SplashState, false)
+    this.state.add('Game', GameState, false)
+
+    // with Cordova with need to wait that the device is ready so we will call the Boot state in another file
+    if (!window.cordova) {
+      this.state.start('Boot')
+    }
+  }
+}
+
+window.game = new Game()
+
+if (window.cordova) {
+  var app = {
+    initialize: function () {
+      document.addEventListener(
+        'deviceready',
+        this.onDeviceReady.bind(this),
+        false
+      )
+    },
+
+    // deviceready Event Handler
+    //
+    onDeviceReady: function () {
+      this.receivedEvent('deviceready')
+
+      // When the device is ready, start Phaser Boot state.
+      window.game.state.start('Boot')
+    },
+
+    receivedEvent: function (id) {
+      console.log('Received Event: ' + id)
+    }
+  }
+
+  app.initialize()
+}

@@ -1,47 +1,49 @@
 class Player {
 
     constructor(game) {
+        this.moves = [this.moveDown, this.moveUp];
         this.game = game;
-        this.moves = [this.moveLeft, this.moveRight, this.moveDown, this.moveUp];
     }
 
     loadPlayer() {
-        this.game.load.image('player', './assets/spritesheet.png');
+        this.game.load.atlasJSONHash('player', './assets/spritesheet.png', './assets/parasite.json');
     }
 
-    createPlayer() {
-        this.sprite = this.game.add.sprite(48, 48, 'player', 1);
-        this.sprite.animation.add('move', [1,2,3]);
-        this.game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
+    createPlayer(game) {
+        this.sprite = this.game.add.sprite(48, 48, 'player');
+        this.sprite.scale.setTo(1.5, 1.5);
+        this.sprite.animations.add('move');
+        this.game.physics.p2.enable(this.sprite);
+        this.sprite.body.collideWorldBounds = true;
         this.game.camera.follow(this.sprite);
     }
 
     checkMove(cursors) {
-        let keys = [cursors.left.isDown, cursors.right.isDown, cursors.down.isDown, cursors.up.isDown];
+        let keys = [cursors.down.isDown, cursors.up.isDown];
 
+        let angle = this.toMouse();
+        this.sprite.body.setZeroVelocity();
         for (let i = 0; i < keys.length; i++)
             if (keys[i])
-                this.moves[i]();
+                this.moves[i](this.sprite, angle);
     }
 
-    moveLeft() {
-        this.sprite.body.velocity.set(0);
-        this.sprite.velocity.x = -100;
+    toMouse() {
+        let angle = Math.atan2(this.game.input.mousePointer.y - this.sprite.body.y, this.game.input.mousePointer.x - this.sprite.body.x);
+        this.sprite.body.rotation = angle;
+        return (angle);
     }
 
-    moveRight() {
-        this.sprite.body.velocity.set(0);
-        this.sprite.velocity.x = 100;
+    moveUp(sprite, angle) {
+        sprite.body.x += Math.cos(angle) * 10;
+        sprite.body.y += Math.sin(angle) * 10;
+        sprite.animations.play('move', 8);
     }
 
-    moveUp() {
-        this.sprite.body.velocity.set(0);
-        this.sprite.velocity.y = -100;
-    }
-
-    moveDown() {
-        this.sprite.body.velocity.set(0);
-        this.sprite.velocity.y = 100;
+    moveDown(sprite, angle) {
+        sprite.body.x += -(Math.cos(angle) * 10);
+        sprite.body.y += -(Math.sin(angle) * 10);
+        sprite.animations.play('move', 8);
     }
 
 }

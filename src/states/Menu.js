@@ -35,7 +35,7 @@ class Menu extends Phaser.State {
 	}
 
     OnClick() {
-        //this.game.state.start('Game');
+        this.game.state.start('Stage1');
     }
 
 

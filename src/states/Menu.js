@@ -6,6 +6,7 @@ class Menu extends Phaser.State {
 
 	create() {
 	    this.initBackground();
+	    this.initButton();
 	}
 
 	initBackground() {
@@ -15,6 +16,9 @@ class Menu extends Phaser.State {
         sprite.height = this.game.height;
     }
 
+    initButton() {
+		
+	}
 }
 
 export default Menu;

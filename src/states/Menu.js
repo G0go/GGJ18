@@ -5,14 +5,15 @@ class Menu extends Phaser.State {
 	}
 
 	create() {
-		console.log('bite');
-		var sprite = this.game.add.sprite(this.game.width / 2, this.game.height / 2, 'Menu_background');
-		sprite.anchor.set(0.5, 0.5);
-		sprite.width = this.game.width;
-		sprite.height = this.game.height;
-		console.log(window.innerHeight);
-		console.log(window.innerWidth);
+	    this.initBackground();
 	}
+
+	initBackground() {
+        let sprite = this.game.add.sprite(this.game.width / 2, this.game.height / 2, 'Menu_background');
+        sprite.anchor.set(0.5, 0.5);
+        sprite.width = this.game.width;
+        sprite.height = this.game.height;
+    }
 
 }
 

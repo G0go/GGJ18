@@ -73,6 +73,10 @@ class Player {
         }
     }
 
+    stop() {
+        this.trigger = false;
+    }
+
 }
 
 export default Player;

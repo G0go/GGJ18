@@ -7,11 +7,11 @@ class Stage1 extends Phaser.State {
     preload() {
         this.player = new Player(this.game);
         this.player.loadPlayer();
-        this.game.load.image('dashicon', './assets/play_button.png');
+        this.game.load.image('Dashicon', 'assets/Icon.png');
     }
 
     create() {
-        let dashicon = this.game.add.sprite(this.game.width / 2, this.game.height - 50, 'dashicon');
+        this.dashicon = this.game.add.sprite(this.game.width / 2, this.game.height - 100, 'Dashicon');
         this.game.physics.startSystem(Phaser.Physics.P2JS);
         this.initBackground();
         this.game.input.mouse.capture = true;
@@ -22,6 +22,9 @@ class Stage1 extends Phaser.State {
 
     update() {
         this.player.checkMove(this.cursors);
+        if (Date.now() - this.player.lastCall < this.player.cooldown) {
+            this.dashicon.alpha = (Date.now() - this.player.lastCall) / this.player.cooldown;
+        }
     }
 
     initBackground() {

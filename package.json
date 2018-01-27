@@ -1,34 +1,45 @@
 {
-  "name": "GGJ18",
-  "version": "1.0.0",
+  "name": "app",
+  "productName": "App",
+  "version": "0.0.0",
   "description": "",
-  "scripts": {
-    "start": "budo src/main.js:bundle.js --live -- -d -e src/main.js -t [babelify --comments false --presets env]",
-    "prebuild": "mkdirp build",
-    "build": "npm run build:js && npm run build:css && npm run build:html && npm run copy:all",
-    "build:js": "browserify -d -e src/main.js -t [babelify --comments false --presets env] | uglifyjs -cm > build/bundle.min.js",
-    "build:css": "cleancss css/main.css -o build/main.min.css",
-    "build:html": "htmlprocessor index.html -o build/index.html",
-    "copy:all": "npm run copy:assets && npm run copy:phaser",
-    "copy:assets": "ncp assets build/assets/",
-    "copy:phaser": "ncp node_modules/phaser-ce/build/phaser.min.js build/phaser.min.js"
+  "license": "MIT",
+  "repository": "user/repo",
+  "author": {
+    "name": "Excalibur.js Team",
+    "email": "",
+    "url": "https://github.com/excaliburjs"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "scripts": {
+    "test": "xo",
+    "start": "node_modules/.bin/tsc -p game && electron .",
+    "build": "node_modules/.bin/tsc -p game && electron-packager . --out=dist --asar --overwrite --all"
+  },
+  "files": [
+    "index.js",
+    "index.html",
+    "index.css"
+  ],
+  "keywords": [
+    "electron-app",
+    "electron"
+  ],
   "dependencies": {
-    "phaser-ce": "^2.9.3"
+    "electron-debug": "^1.5.0",
+    "excalibur": "^0.14.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babelify": "^8.0.0",
-    "babel-preset-env": "^1.6.1",
-    "browserify": "^14.5.0",
-    "budo": "^10.0.4",
-    "clean-css-cli": "^4.1.10",
-    "htmlprocessor": "^0.2.6",
-    "mkdirp": "^0.5.1",
-    "ncp": "^2.0.0",
-    "uglify-js": "^3.1.6"
+    "devtron": "1.4.0",
+    "electron": "^1.7.11",
+    "electron-packager": "^10.1.1",
+    "typescript": "^2.6.2",
+    "xo": "^0.18.2"
+  },
+  "xo": {
+    "esnext": true,
+    "envs": [
+      "node",
+      "browser"
+    ]
   }
 }

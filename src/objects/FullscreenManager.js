@@ -2,6 +2,7 @@ class FullscreenManager {
 
     constructor(game) {
         this.game = game;
+        game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
     }
 
     Gofull() {

@@ -1,7 +1,6 @@
 node_modules
-/dist
-game/*.js
-game/*.map
+build
+*.log
+*.tmp
 .idea/
 .vscode/
-package-lock.json

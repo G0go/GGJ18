@@ -6,7 +6,12 @@ import Stage1 from 'states/Stage1';
 class Game extends Phaser.Game {
 
 	constructor() {
-        super(window.innerWidth, window.innerHeight, Phaser.AUTO, 'content', null);
+        super(window.innerWidth, window.innerHeight, Phaser.AUTO, 'content', {
+            init: () => {
+                this.AStar = this.game.plugins.add(Phaser.Plugin.AStar);
+                this.CPU = this.game.plugins.add(Phaser.Plugin.SaveCPU);
+            }
+        });
         this.initGameStates();
 		this.state.start('Loader');
 	}

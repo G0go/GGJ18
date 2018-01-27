@@ -1,5 +1,7 @@
+import Phaser from 'phaser'
 import Loader from 'states/Loader';
 import Menu from 'states/Menu';
+import Stage1 from 'states/Stage1';
 
 class Game extends Phaser.Game {
 
@@ -12,6 +14,7 @@ class Game extends Phaser.Game {
     initGameStates() {
         this.state.add('Loader', Loader, false);
         this.state.add('Menu', Menu, false);
+        this.state.add('Stage1', Stage1, false);
     }
 
 }

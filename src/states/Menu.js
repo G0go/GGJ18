@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import FullscreenManager from "../objects/FullscreenManager";
+=======
+import Phaser from 'phaser'
+>>>>>>> de6ccc1141e082adf3a75d2525417762e143b578
 
 class Menu extends Phaser.State {
 
@@ -38,7 +42,7 @@ class Menu extends Phaser.State {
 	}
 
     OnClick() {
-        //this.game.state.start('Game');
+        this.game.state.start('Stage1');
     }
 
 

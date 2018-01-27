@@ -1,0 +1,36 @@
+{"frames": [
+
+{
+	"filename": "001.png",
+	"frame": {"x":0,"y":0,"w":27,"h":15},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":27,"h":15},
+	"sourceSize": {"w":27,"h":15}
+},
+{
+	"filename": "002.png",
+	"frame": {"x":27,"y":0,"w":27,"h":15},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":27,"h":15},
+	"sourceSize": {"w":27,"h":15}
+},
+{
+	"filename": "003.png",
+	"frame": {"x":54,"y":0,"w":27,"h":15},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":27,"h":15},
+	"sourceSize": {"w":27,"h":15}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "parasite.png",
+	"format": "RGBA8888",
+	"size": {"w":108,"h":15},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:4cef2e273e5f2adaebd1385383b9ba48:2c879ae9cb03a4a6a77c2cb6a0e5c932:d5ab08c2386057f31e2e1435de1180bc$"
+}
+}

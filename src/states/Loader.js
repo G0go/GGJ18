@@ -1,3 +1,4 @@
+import FullscreenManager from "../objects/FullscreenManager";
 import Phaser from 'phaser'
 
 class Loader extends Phaser.State {
@@ -10,7 +11,8 @@ class Loader extends Phaser.State {
     initGlobalVariables() {
         this.game.global = {
             height: window.innerHeight,
-            width: window.innerWidth
+            width: window.innerWidth,
+            fullscreenManager: new FullscreenManager(this.game)
         };
     }
 

@@ -7,9 +7,11 @@ class Stage1 extends Phaser.State {
     preload() {
         this.player = new Player(this.game);
         this.player.loadPlayer();
+        this.game.load.image('dashicon', './assets/play_button.png');
     }
 
     create() {
+        let dashicon = this.game.add.sprite(this.game.width / 2, this.game.height - 50, 'dashicon');
         this.game.physics.startSystem(Phaser.Physics.P2JS);
         this.initBackground();
         this.game.input.mouse.capture = true;

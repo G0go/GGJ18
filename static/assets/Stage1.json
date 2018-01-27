@@ -21,7 +21,7 @@
         {
          "columns":16,
          "firstgid":1,
-         "image":"..\/..\/..\/Introduction_to_JS\/bettertileset.png",
+         "image":"assets/tileset.png",
          "imageheight":224,
          "imagewidth":256,
          "margin":0,
@@ -34,7 +34,7 @@
         {
          "columns":16,
          "firstgid":225,
-         "image":"..\/..\/..\/Introduction_to_JS\/bettertileset.png",
+         "image":"assets/tileset.png",
          "imageheight":224,
          "imagewidth":256,
          "margin":0,

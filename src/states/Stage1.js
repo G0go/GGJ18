@@ -8,6 +8,8 @@ class Stage1 extends Phaser.State {
         this.player = new Player(this.game);
         this.player.loadPlayer();
         this.game.load.image('Dashicon', 'assets/Icon.png');
+        this.game.load.tilemap('stage1', 'assets/Stage1.json', null, Phaser.Tilemap.TILED_JSON);
+        this.game.load.image('tiles', 'assets/tileset.png');
     }
 
     create() {
@@ -17,6 +19,9 @@ class Stage1 extends Phaser.State {
         this.cursors = this.game.input.keyboard.createCursorKeys();
         this.player.createPlayer();
         this.drawUI();
+        this.map = this.game.add.tilemap('stage1');
+        this.map.addTilesetImage('assets/tileset.png', 'tiles');
+
     }
 
     update() {

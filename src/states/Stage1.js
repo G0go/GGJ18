@@ -12,6 +12,7 @@ class Stage1 extends Phaser.State {
     create() {
         this.game.physics.startSystem(Phaser.Physics.P2JS);
         this.initBackground();
+        this.game.input.mouse.capture = true;
         this.cursors = this.game.input.keyboard.createCursorKeys();
         this.player.createPlayer();
     }

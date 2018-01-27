@@ -1,3 +1,5 @@
+import FullscreenManager from "../objects/FullscreenManager";
+
 class Menu extends Phaser.State {
 
 	preload() {
@@ -6,6 +8,7 @@ class Menu extends Phaser.State {
 	}
 
 	create() {
+		this.game.global.fullscreenManager.init();
 	    this.initBackground();
 	    this.button = this.initButton();
 	}

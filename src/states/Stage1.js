@@ -29,8 +29,8 @@ class Stage1 extends Phaser.State {
     }
 
     initTxt() {
-        let style = { font: "65px Arial", fill: "#000", align: "center" };
-        let txt = this.game.add.text(this.game.world.centerX, this.game.world.centerY, "- phaser -\nwith a sprinkle of\npixi dust", style);
+        let style = { font: "20px Arial", fill: "#000", align: "center" };
+        let txt = this.game.add.text(this.game.world.centerX, this.game.world.centerY, "Dash", style);
         txt.anchor.set(0.5);
     }
 

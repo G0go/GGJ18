@@ -1,4 +1,5 @@
 import Spell from '../objects/Spell'
+import Phaser from 'phaser'
 
 class Player {
 
@@ -23,7 +24,8 @@ class Player {
         this.sprite = this.game.add.sprite(48, 48, 'player');
         this.sprite.scale.setTo(1.5, 1.5);
         this.sprite.animations.add('move');
-        this.game.physics.p2.enable(this.sprite);
+        this.game.physics.enable(this.sprite, Phaser.Physics.P2JS);
+        // this.game.physics.p2.enable(this.sprite);
         this.game.camera.follow(this.sprite);
     }
 
@@ -54,14 +56,14 @@ class Player {
     }
 
     moveUp(sprite, angle) {
-        sprite.body.x += Math.cos(angle) * 10;
-        sprite.body.y += Math.sin(angle) * 10;
+        sprite.body.x += Math.cos(angle) * 2;
+        sprite.body.y += Math.sin(angle) * 2;
         sprite.animations.play('move', 8);
     }
 
     moveDown(sprite, angle) {
-        sprite.body.x += -(Math.cos(angle) * 10);
-        sprite.body.y += -(Math.sin(angle) * 10);
+        sprite.body.x += -(Math.cos(angle) * 2);
+        sprite.body.y += -(Math.sin(angle) * 2);
         sprite.animations.play('move', 8);
     }
 

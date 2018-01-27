@@ -35,7 +35,8 @@ class Stage1 extends Phaser.State {
 
         this.game.physics.p2.setBoundsToWorld(true, true, true, true, false);
         this.player.sprite.body.collideWorldBounds = true;
-
+        this.player.sprite.body.x = 200;
+        this.player.sprite.body.y = 200;
     }
 
     update() {

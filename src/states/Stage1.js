@@ -26,9 +26,7 @@ class Stage1 extends Phaser.State {
 
     update() {
         this.player.checkMove(this.cursors);
-        if (Date.now() - this.player.lastCall < this.player.cooldown) {
-            this.dashicon.alpha = (Date.now() - this.player.lastCall) / this.player.cooldown;
-        }
+        this.player.spell.checkCooldown();
     }
 
     initBackground() {
@@ -36,15 +34,7 @@ class Stage1 extends Phaser.State {
     }
 
     drawUI() {
-        this.dashicon = this.game.add.sprite((this.game.width) / 2, this.game.height - 100, 'Dashicon');
-        this.dashicon.anchor.set(0.5);
-        this.drawTxt();
-    }
-
-    drawTxt() {
-        let style = { font: "20px Arial", fill: "#000", align: "center" };
-        let txt = this.game.add.text(this.game.world.centerX, this.game.height - 50, "Dash", style);
-        txt.anchor.set(0.5);
+        this.player.spell.drawOnUI(this.game);
     }
 
 }

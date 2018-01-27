@@ -1,12 +1,15 @@
-import Phaser from 'phaser'
+import Spell from '../objects/Spell'
 
 class Player {
 
     constructor(game) {
         this.moves = [this.moveDown, this.moveUp];
         this.game = game;
-        this.cooldown = 3000;
-        this.lastCall = 0;
+        this.spell = new Spell('Dash', 3000, (self) => {
+            self.moveToPosition(40);
+            if (Math.abs(self.sprite.body.x - self.target.x) < 30 && Math.abs(self.sprite.body.y - self.target.y) < 30)
+                self.trigger = false;
+        });
         this.trigger = false;
         this.target = undefined;
     }
@@ -33,11 +36,8 @@ class Player {
             for (let i = 0; i < keys.length; i++)
                 if (keys[i])
                     this.moves[i](this.sprite, angle);
-        } else {
-            this.moveToPosition(40);
-            if (Math.abs(this.sprite.body.x - this.target.x) < 30 && Math.abs(this.sprite.body.y - this.target.y) < 30)
-                this.trigger = false;
-        }
+        } else
+            this.spell.effect(this);
 
     }
 
@@ -66,8 +66,8 @@ class Player {
     }
 
     attack() {
-        if ((Date.now() - this.lastCall) > this.cooldown) {
-            this.lastCall = Date.now();
+        if (this.spell.isReady()) {
+            this.spell.use();
             this.trigger = true;
             this.target = {x: this.game.input.mousePointer.x, y: this.game.input.mousePointer.y};
         }

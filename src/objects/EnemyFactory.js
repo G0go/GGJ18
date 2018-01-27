@@ -6,7 +6,11 @@ class EnemyFactory {
     constructor(game) {
         this.game = game;
         this.initEnemiesType();
-        this.protos = this.initEnemies();
+        this.protos = [
+            { name: 'gunman', spell: new Spell('Shoot', 700, (self) => {}) },
+            { name: 'swordman', spell: new Spell('Hit', 300, (self) => {}) },
+            { name: 'dog', spell: new Spell('Bite', 300, (self) => {}) }
+        ];
         this.enemies = [];
     }
 
@@ -14,14 +18,6 @@ class EnemyFactory {
         this.GUNMAN = 0;
         this.SWORDMAN = 1;
         this.DOG = 2;
-    }
-
-    initEnemies() {
-        return ([
-            { name: 'gunman', spell: new Spell('Shoot', 700, (self) => {}) },
-            { name: 'swordman', spell: new Spell('Hit', 300, (self) => {}) },
-            { name: 'dog', spell: new Spell('Bite', 300, (self) => {}) }
-        ]);
     }
 
     spawn(type, position) {

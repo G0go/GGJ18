@@ -1,3 +1,5 @@
+import Phaser from 'phaser'
+
 class Loader extends Phaser.State {
 
     create() {

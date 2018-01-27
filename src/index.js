@@ -3,10 +3,14 @@ import Menu from 'states/Menu';
 class Game extends Phaser.Game {
 
 	constructor() {
-		super(500, 500, Phaser.AUTO, 'content', null);
-		this.state.add('Menu', Menu, false);
+        super(window.innerWidth, window.innerHeight, Phaser.AUTO, 'content', null);
+        this.initGameStates();
 		this.state.start('Menu');
 	}
+
+    initGameStates() {
+        this.state.add('Menu', Menu, false);
+    }
 
 }
 

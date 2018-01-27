@@ -1,3 +1,5 @@
+import Phaser from 'phaser'
+
 import Player from '../objects/Player'
 
 class Stage1 extends Phaser.State {

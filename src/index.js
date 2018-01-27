@@ -1,3 +1,4 @@
+import Phaser from 'phaser'
 import Loader from 'states/Loader';
 import Menu from 'states/Menu';
 import Stage1 from 'states/Stage1';

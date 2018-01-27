@@ -21,7 +21,7 @@ class Spell {
     }
 
     drawOnUI(game) {
-        this.dashicon = game.add.sprite((game.width) / 2, game.height - 100, 'Dashicon');
+        this.dashicon = game.add.sprite((game.width) / 2, game.height - 100, this.name + 'icon');
         this.dashicon.anchor.set(0.5);
         let style = { font: "20px Arial", fill: "#000", align: "center" };
         this.txt = game.add.text(game.world.centerX, game.height - 50, this.name, style);

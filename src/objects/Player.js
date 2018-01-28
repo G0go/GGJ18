@@ -22,7 +22,7 @@ class Player {
     createPlayer() {
         this.game.input.onDown.add(this.attack, this);
         this.sprite = this.game.add.sprite(48, 48, 'player');
-        this.sprite.scale.setTo(1.5, 1.5);
+        this.sprite.scale.setTo(1, 1);
         this.sprite.animations.add('move');
         this.game.physics.enable(this.sprite, Phaser.Physics.P2JS);
         this.game.camera.follow(this.sprite);
@@ -31,7 +31,7 @@ class Player {
     checkMove(cursors) {
         let moves = [
             {
-                key: cursors.down.isDown,
+                key: cursors.up.isDown,
                 callback: () => {
                     this.sprite.body.x += Math.cos(this.angle) * 2;
                     this.sprite.body.y += Math.sin(this.angle) * 2;
@@ -39,7 +39,7 @@ class Player {
                 }
             },
             {
-                key: cursors.up.isUp,
+                key: cursors.down.isDown,
                 callback: () => {
                     this.sprite.body.x += -(Math.cos(this.angle) * 2);
                     this.sprite.body.y += -(Math.sin(this.angle) * 2);
@@ -51,7 +51,7 @@ class Player {
         if (!this.trigger) {
             this.sprite.body.setZeroVelocity();
             this.angle = this.toPosition(this.game.input.mousePointer);
-            moves.find((e) => e.key).callback();
+            moves.filter(e => e.key).forEach(e => e.callback());
         } else
             this.spell.effect(this);
 
@@ -60,7 +60,7 @@ class Player {
     toPosition(obj) {
         let angle = Math.atan2(obj.y - this.sprite.body.y, obj.x - this.sprite.body.x);
         this.sprite.body.rotation = angle;
-        return (angle);
+        return angle;
     }
 
     moveToPosition(speed) {

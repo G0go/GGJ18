@@ -1,4 +1,5 @@
 import Player from '../objects/Player'
+import Life from '../objects/Life'
 
 class Stage1 extends Phaser.State {
 
@@ -10,6 +11,7 @@ class Stage1 extends Phaser.State {
         this.game.load.image('tiles', 'assets/tileset.png');
         this.map = undefined;
         this.layer = undefined;
+        this.life = new Life(this.game, 2000);
     }
 
     create() {
@@ -26,7 +28,7 @@ class Stage1 extends Phaser.State {
 
         this.layer.resizeWorld();
 
-        this.map.setCollisionByExclusion([4, 5, 6, 64, 65, 66, 67, 68, 69, 70, 71]);
+        this.map.setCollisionByExclusion([4, 5, 64, 65, 66, 67, 68, 69, 70, 71]);
 
         this.game.physics.p2.convertTilemap(this.map, this.layer);
         this.player.createPlayer();
@@ -36,6 +38,8 @@ class Stage1 extends Phaser.State {
         this.player.sprite.body.x = 200;
         this.player.sprite.body.y = 200;
         let enemy = this.game.global.factory.spawn(this.game.global.factory.enemyType.SWORDMAN, {x: 170, y: 100});
+        this.life.create();
+        this.life.start();
         // const navMesh = this.game.path.buildMeshFromTiled(this.map, 'stage1');
         // const p1 = new Phaser.Point(200, 200);
         // const p2 = new Phaser.Point(200, 100);
@@ -53,6 +57,15 @@ class Stage1 extends Phaser.State {
     update() {
         this.player.checkMove(this.cursors);
         this.player.spell.checkCooldown();
+<<<<<<< HEAD
+        this.player.isAlive = false;
+        if (this.player.isAlive === false)
+        {
+            this.game.state.start('Gameover');
+        }
+=======
+        this.life.update();
+>>>>>>> 506242dca77ca6570c7ac3fe4027a7e5ac2ba3c7
     }
 
     initBackground() {

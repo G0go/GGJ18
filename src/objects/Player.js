@@ -123,6 +123,7 @@ class Player {
         if (to.lastTrigger != undefined && to.lastTrigger != null) {
             this.sprite.destroy();
             this.sprite = to.lastTrigger;
+            this.sprite.tint = 0xff0000;
             this.trigger = false;
             this.game.camera.follow(this.sprite);
             to.clearTriggers();

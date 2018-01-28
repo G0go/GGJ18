@@ -12,6 +12,7 @@ class Stage1 extends Phaser.State {
         this.map = undefined;
         this.layer = undefined;
         this.life = new Life(this.game, 2000);
+        this.game.global.factory.loadSprites();
     }
 
     create() {
@@ -38,6 +39,7 @@ class Stage1 extends Phaser.State {
         this.player.sprite.body.x = 200;
         this.player.sprite.body.y = 200;
         let enemy = this.game.global.factory.spawn(this.game.global.factory.enemyType.SWORDMAN, {x: 170, y: 100});
+        let enemy2 = this.game.global.factory.spawn(this.game.global.factory.enemyType.SWORDMAN, {x: 170, y: 300});
         this.life.create();
         this.life.start();
         // const navMesh = this.game.path.buildMeshFromTiled(this.map, 'stage1');

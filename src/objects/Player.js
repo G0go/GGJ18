@@ -38,7 +38,6 @@ class Player {
                     this.moves[i](this.sprite, angle);
         } else
             this.spell.effect(this);
-
     }
 
     toPosition(obj) {

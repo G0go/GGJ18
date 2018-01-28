@@ -18,10 +18,13 @@ class EnemyFactory {
 
     initEnemies() {
         return ([
-            { name: 'gunman', spell: new Spell('Shoot', 700, (self) => {}) },
-            { name: 'swordman', spell: new Spell('Hit', 300, (self) => {}) },
-            { name: 'dog', spell: new Spell('Bite', 300, (self) => {}) }
+            { name: 'gunman', spell: new Spell('Shoot', 700, (self) => {}), range: 300, path: '' },
+            { name: 'swordman', spell: new Spell('Hit', 300, (self) => {}), range: 200, path: '' },
+            { name: 'dog', spell: new Spell('Bite', 300, (self) => {}), range: 400, path: '' }
         ]);
+    }
+
+    loadSprites() {
     }
 
     spawn(type, position) {

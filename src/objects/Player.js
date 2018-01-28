@@ -5,16 +5,17 @@ class Player {
 
     constructor(game) {
         this.game = game;
-        this.spell = new Spell('Dash', 'LF click', 3000, (self) => {
-            self.moveToPosition(8);
+        this.spell = new Spell('Dash', 'LF click', 1000, (self) => {
+            self.moveToPosition(20);
             if (Math.abs(self.sprite.body.x - self.target.x) < 10 && Math.abs(self.sprite.body.y - self.target.y) < 10)
-                self.trigger = false;
+                this.transform();
         });
         this.space = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         game.input.keyboard.addKeyCapture(Phaser.Keyboard.SPACEBAR);
         this.trigger = false;
         this.target = undefined;
         this.angle = 0;
+        this.isAlive = true;
     }
 
     loadPlayer() {
@@ -82,6 +83,10 @@ class Player {
             this.trigger = true;
             this.target = {x: this.game.input.mousePointer.x, y: this.game.input.mousePointer.y};
         }
+    }
+
+    transform() {
+        self.trigger = false;
     }
 }
 

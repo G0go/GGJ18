@@ -23,6 +23,7 @@ class EnemyFactory {
     }
 
     clearTriggers() {
+        this.lastTrigger = undefined;
         this.enemies.map(enemy => enemy.triggered = false);
     }
 
@@ -31,8 +32,9 @@ class EnemyFactory {
         let sprite = this.game.add.sprite(position.x, position.y, proto.name);
         let enemy = new Enemy(sprite, proto.spell);
         sprite.inputEnabled = true;
-        sprite.events.onInputDown.add((enemy) => { enemy.triggered = true; this.lastTrigger = enemy; }, enemy);
+        sprite.events.onInputDown.add((enemy) => { enemy.triggered = true; this.lastTrigger = enemy; console.log("Add to last : ", enemy); });
         this.enemies.push(enemy);
+        this.game.physics.enable(enemy.sprite, Phaser.Physics.P2JS);
         return enemy;
     }
 

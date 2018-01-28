@@ -6,9 +6,14 @@ class Player {
     constructor(game) {
         this.game = game;
         this.spell = new Spell('Dash', 'LF click', 1000, (self) => {
-            self.moveToPosition(20);
+            if (self.sprite == undefined || this.game.global.factory.lastTrigger == undefined) {
+                this.trigger = false;
+                return;
+            }
             if (Math.abs(self.sprite.body.x - self.target.x) < 10 && Math.abs(self.sprite.body.y - self.target.y) < 10)
                 this.transform();
+            else
+                self.moveToPosition(20);
         });
         this.space = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         game.input.keyboard.addKeyCapture(Phaser.Keyboard.SPACEBAR);
@@ -38,7 +43,7 @@ class Player {
                 callback: () => {
                     this.sprite.body.x += Math.cos(this.angle) * 2;
                     this.sprite.body.y += Math.sin(this.angle) * 2;
-                    this.sprite.animations.play('move', 8);
+                    //this.sprite.animations.play('move', 8);
                 }
             },
             {
@@ -46,7 +51,7 @@ class Player {
                 callback: () => {
                     this.sprite.body.x += -(Math.cos(this.angle) * 2);
                     this.sprite.body.y += -(Math.sin(this.angle) * 2);
-                    this.sprite.animations.play('move', 8);
+                    //this.sprite.animations.play('move', 8);
                 }
             },
             {
@@ -57,6 +62,10 @@ class Player {
             }
         ];
 
+        if (this.sprite == undefined) {
+            console.log("Error no sprite set");
+            return;
+        }
         if (!this.trigger) {
             this.sprite.body.setZeroVelocity();
             this.angle = this.toPosition(this.game.input.mousePointer);
@@ -86,7 +95,15 @@ class Player {
     }
 
     transform() {
-        self.trigger = false;
+        let to = this.game.global.factory;
+        console.log(to.lastTrigger);
+        if (to.lastTrigger != undefined && to.lastTrigger != null) {
+            this.sprite.destroy();
+            this.sprite = to.lastTrigger;
+            this.trigger = false;
+            this.game.camera.follow(this.sprite);
+            to.clearTriggers();
+        }
     }
 }
 

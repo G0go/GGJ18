@@ -17,10 +17,15 @@ class Player {
         });
         this.space = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         game.input.keyboard.addKeyCapture(Phaser.Keyboard.SPACEBAR);
+        this.up = game.input.keyboard.addKey(Phaser.Keyboard.Z);
+        game.input.keyboard.addKeyCapture(Phaser.Keyboard.Z);
+        this.down = game.input.keyboard.addKey(Phaser.Keyboard.S);
+        game.input.keyboard.addKeyCapture(Phaser.Keyboard.S);
         this.trigger = false;
         this.target = undefined;
         this.angle = 0;
         this.isAlive = true;
+        this.vanilla = true;
     }
 
     loadPlayer() {
@@ -43,7 +48,8 @@ class Player {
                 callback: () => {
                     this.sprite.body.x += Math.cos(this.angle) * 2;
                     this.sprite.body.y += Math.sin(this.angle) * 2;
-                    //this.sprite.animations.play('move', 8);
+                    if (this.vanilla)
+                        this.sprite.animations.play('move', 8);
                 }
             },
             {
@@ -51,13 +57,30 @@ class Player {
                 callback: () => {
                     this.sprite.body.x += -(Math.cos(this.angle) * 2);
                     this.sprite.body.y += -(Math.sin(this.angle) * 2);
-                    //this.sprite.animations.play('move', 8);
+                    if (this.vanilla)
+                        this.sprite.animations.play('move', 8);
                 }
             },
             {
                 key: this.space.isDown,
+                callback: () => {}
+            },
+            {
+                key: this.down.isDown,
                 callback: () => {
-
+                    this.sprite.body.x += -(Math.cos(this.angle) * 2);
+                    this.sprite.body.y += -(Math.sin(this.angle) * 2);
+                    if (this.vanilla)
+                        this.sprite.animations.play('move', 8);
+                }
+            },
+            {
+                key: this.up.isDown,
+                callback: () => {
+                    this.sprite.body.x += Math.cos(this.angle) * 2;
+                    this.sprite.body.y += Math.sin(this.angle) * 2;
+                    if (this.vanilla)
+                        this.sprite.animations.play('move', 8);
                 }
             }
         ];
@@ -103,6 +126,7 @@ class Player {
             this.trigger = false;
             this.game.camera.follow(this.sprite);
             to.clearTriggers();
+            this.vanilla = false;
         }
     }
 }

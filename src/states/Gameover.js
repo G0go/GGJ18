@@ -1,11 +1,11 @@
 import FullscreenManager from "../objects/FullscreenManager";
 import Phaser from 'phaser';
 
-class Menu extends Phaser.State {
+class Gameover extends Phaser.State {
 
 	preload() {
-		this.game.load.image('Menu_background', 'assets/Menu_background.jpg');
-		this.game.load.image('Play_button', 'assets/play_button.png');
+		this.game.load.image('Gameover_background', 'assets/Menu_background.jpg');
+		this.game.load.image('Retry_button', 'assets/play_button.png');
 	}
 
 	create() {
@@ -15,14 +15,14 @@ class Menu extends Phaser.State {
 	}
 
 	initBackground() {
-        let sprite = this.game.add.image(this.game.width / 2, this.game.height / 2, 'Menu_background');
+        let sprite = this.game.add.image(this.game.width / 2, this.game.height / 2, 'Gameover_background');
         sprite.anchor.set(0.5, 0.5);
         sprite.width = this.game.width;
         sprite.height = this.game.height;
     }
 
     initButton() {
-		let button = this.game.add.button(this.game.width / 2, this.game.height / 2, 'Play_button', this.OnClick, this);
+		let button = this.game.add.button(this.game.width / 2, this.game.height / 2, 'Retry_button', this.OnClick, this);
 		button.anchor.set(0.5, 1.4);
 		button.onInputOver.add(this.Over, this);
 		button.onInputOut.add(this.Out, this);
@@ -45,4 +45,4 @@ class Menu extends Phaser.State {
 
 }
 
-export default Menu;
+export default Gameover;

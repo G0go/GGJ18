@@ -22,7 +22,7 @@ class Menu extends Phaser.State {
     }
 
     initButton() {
-		let button = this.game.add.button(this.game.width / 2, this.game.height / 2, 'Play_button', this.OnClick, this);
+		let button = this.game.add.button(this.game.width / 2, this.game.height / 2 + 100, 'Play_button', this.OnClick, this);
 		button.anchor.set(0.5, 1);
 		button.onInputOver.add(this.Over, this);
 		button.onInputOut.add(this.Out, this);

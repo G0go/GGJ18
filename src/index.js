@@ -26,4 +26,4 @@ class Game extends Phaser.Game {
 
 }
 
-new Game();
+let toto = new Game();

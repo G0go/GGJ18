@@ -53,6 +53,11 @@ class Stage1 extends Phaser.State {
     update() {
         this.player.checkMove(this.cursors);
         this.player.spell.checkCooldown();
+        this.player.isAlive = false;
+        if (this.player.isAlive === false)
+        {
+            this.game.state.start('Gameover');
+        }
     }
 
     initBackground() {

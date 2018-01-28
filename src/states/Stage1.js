@@ -1,7 +1,4 @@
-import Phaser from 'phaser'
-
 import Player from '../objects/Player'
-import EnemyFactory from "../objects/EnemyFactory";
 
 class Stage1 extends Phaser.State {
 
@@ -13,7 +10,6 @@ class Stage1 extends Phaser.State {
         this.game.load.image('tiles', 'assets/tileset.png');
         this.map = undefined;
         this.layer = undefined;
-        this.factory = new EnemyFactory(this.game);
     }
 
     create() {
@@ -39,7 +35,7 @@ class Stage1 extends Phaser.State {
         this.player.sprite.body.collideWorldBounds = true;
         this.player.sprite.body.x = 200;
         this.player.sprite.body.y = 200;
-        let enemy = this.factory.spawn(this.factory.enemyType.SWORDMAN, {x: 170, y: 100});
+        let enemy = this.game.global.factory.spawn(this.game.global.factory.enemyType.SWORDMAN, {x: 170, y: 100});
         // const navMesh = this.game.path.buildMeshFromTiled(this.map, 'stage1');
         // const p1 = new Phaser.Point(200, 200);
         // const p2 = new Phaser.Point(200, 100);
@@ -60,7 +56,7 @@ class Stage1 extends Phaser.State {
     }
 
     initBackground() {
-        this.game.stage.backgroundColor = '#fff';
+        this.game.stage.backgroundColor = '#000';
     }
 
     drawUI() {

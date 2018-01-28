@@ -3,7 +3,7 @@ class Life {
     constructor(game, timelife) {
         this.game = game;
         this.x = 50;
-        this.y = game.height - 50;
+        this.y = 415;
         this.maxWidth = 250;
         this.height = 50;
         this.sprite = undefined;
@@ -18,15 +18,18 @@ class Life {
     }
 
     create() {
-        this.graphics.lineStyle(2, 0x40A472, 200);
-        this.graphics.drawRect(this.x, this.y, this.maxWidth, this.height);
+        this.graphics.beginFill(0x40A472, 1);
+        this.graphics.lineStyle(2, 0x40A472, 1);
+        this.lifebar = this.graphics.drawRect(this.x, this.y, this.maxWidth, this.height);
+        this.graphics.endFill();
+
     }
 
     update() {
-        /*let elapse = Date.now() - this.time;
-        this.graphics. = this.maxWidth * (1 - elapse / this.time);
+        let elapse = Date.now() - this.time;
+        this.lifebar.width = this.maxWidth * (1 - elapse / this.time);
         if (this.graphics.width == 0)
-            this.isAlive = false;*/
+            this.isAlive = false;
     }
 
 }

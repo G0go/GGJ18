@@ -1,5 +1,6 @@
 import FullscreenManager from "../objects/FullscreenManager";
 import Phaser from 'phaser'
+import PhaserNavmesh from "phaser-navmesh";
 
 class Loader extends Phaser.State {
 
@@ -9,6 +10,7 @@ class Loader extends Phaser.State {
     }
 
     initGlobalVariables() {
+        this.game.path = this.game.plugins.add(PhaserNavmesh);
         this.game.global = {
             height: window.innerHeight,
             width: window.innerWidth,

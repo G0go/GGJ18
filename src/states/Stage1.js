@@ -38,6 +38,8 @@ class Stage1 extends Phaser.State {
         this.player.sprite.body.y = 200;
         let enemy = this.game.global.factory.spawn(this.game.global.factory.enemyType.SWORDMAN, {x: 170, y: 100});
         let enemy2 = this.game.global.factory.spawn(this.game.global.factory.enemyType.SWORDMAN, {x: 170, y: 300});
+        let enemy3 = this.game.global.factory.spawn(this.game.global.factory.enemyType.SWORDMAN, {x: 250, y: 100});
+        let enemy4 = this.game.global.factory.spawn(this.game.global.factory.enemyType.SWORDMAN, {x: 300, y: 200});
         console.log(this.game.global.life);
         this.game.global.life.create();
         this.game.global.life.start();

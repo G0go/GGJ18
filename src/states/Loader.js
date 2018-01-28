@@ -2,6 +2,7 @@ import FullscreenManager from "../objects/FullscreenManager";
 import Phaser from 'phaser'
 import PhaserNavmesh from "phaser-navmesh";
 import EnemyFactory from "../objects/EnemyFactory";
+import Life from "../objects/Life";
 
 class Loader extends Phaser.State {
 
@@ -17,7 +18,8 @@ class Loader extends Phaser.State {
             height: window.innerHeight,
             width: window.innerWidth,
             fullscreenManager: new FullscreenManager(this.game),
-            factory: new EnemyFactory(this.game)
+            factory: new EnemyFactory(this.game),
+            life: new Life(this.game, 4000)
         };
     }
 

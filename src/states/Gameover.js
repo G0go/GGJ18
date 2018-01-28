@@ -5,13 +5,13 @@ class Gameover extends Phaser.State {
 
 	preload() {
 		this.game.load.image('Gameover_background', 'assets/Menu_background.jpg');
-		this.game.load.image('Retry_button', 'assets/play_button.png');
 	}
 
 	create() {
 		this.game.global.fullscreenManager.init();
 	    this.initBackground();
-	    this.button = this.initButton();
+        let spellStyle = { font: "20px Arial", fill: "#fff", align: "center" };
+        this.spellName = this.game.add.text(this.game.world.centerX, this.game.world.centerY, "You loose..", spellStyle);
 	}
 
 	initBackground() {
@@ -20,28 +20,6 @@ class Gameover extends Phaser.State {
         sprite.width = this.game.width;
         sprite.height = this.game.height;
     }
-
-    initButton() {
-		let button = this.game.add.button(this.game.width / 2, this.game.height / 2, 'Retry_button', this.OnClick, this);
-		button.anchor.set(0.5, 1.4);
-		button.onInputOver.add(this.Over, this);
-		button.onInputOut.add(this.Out, this);
-
-		return (button);
-	}
-
-	Out() {
-		this.button.scale.setTo(1, 1);
-	}
-
-	Over() {
-		this.button.scale.setTo(1.2, 1.2);
-	}
-
-    OnClick() {
-        this.game.state.start('Stage1');
-    }
-
 
 }
 

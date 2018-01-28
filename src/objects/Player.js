@@ -119,8 +119,8 @@ class Player {
 
     transform() {
         let to = this.game.global.factory;
-        console.log(to.lastTrigger);
         if (to.lastTrigger != undefined && to.lastTrigger != null) {
+            this.game.global.life.start();
             this.sprite.destroy();
             this.sprite = to.lastTrigger;
             this.sprite.tint = 0xff0000;
